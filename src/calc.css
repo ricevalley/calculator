@@ -1,0 +1,236 @@
+:root {
+	--main-color-light: #fdeff2;
+	--main-color-medium: #fccad5;
+	--main-color-strong: #fc97ad;
+	--main-color-outline: #fc325e;
+	--main-color-dark: #ccc0c2;
+	--main-color-text: #333031;
+	--main-color-line: #9a9a9a;
+
+	--calculator-w: 60vmin;
+	--calculator-h: 65vmin;
+	--btn-font-size: 3.5vmin;
+}
+@font-face {
+	/*
+		Read /Mini-ToyBox/src/fonts/OFL.txt
+	*/
+	font-family: 'ZenMaruGothic';
+	src: url('fonts/ZenMaruGothic-Medium.ttf') format('truetype');
+}
+* {
+	padding: 0;
+	margin: 0;
+}
+body {
+	background-color: var(--main-color-light);
+	font-family: ZenMaruGothic;
+	font-size: 3vmin;
+}
+::selection {
+	background-color: var(--main-color-light);
+}
+main {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-content: center;
+	flex-wrap: wrap;
+	gap: 3vmin;
+	height: 100vh;
+}
+#calcDisplay {
+	background-color: #fff;
+	width: var(--calculator-w);
+	height: calc(var(--calculator-w) / 5);
+	padding: 1vmin;
+	border-radius: 1vmin;
+	box-sizing: border-box;
+	border: solid var(--main-color-dark) 0.25vmin;
+	font-size: calc(var(--calculator-w) / 10);
+	color: var(--main-color-text);
+	font-family: ZenMaruGothic;
+	outline: none;
+}
+#calcDisplay.error {
+	color: var(--main-color-strong);
+}
+#numPad {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-template-rows: repeat(8, 1fr);
+	gap: 1vmin;
+	width: var(--calculator-w);
+	height: var(--calculator-h);
+}
+#numPad button {
+	background-color: transparent;
+	color: var(--main-color-text);
+	border: solid var(--main-color-dark) 0.25vmin;
+	border-radius: 1vmin;
+	outline: none;
+	font-family: ZenMaruGothic;
+	font-size: var(--btn-font-size);
+	user-select: none;
+	cursor: pointer;
+	-webkit-tap-highlight-color: transparent;
+}
+#numPad button:active,
+#numPad button.adv:active {
+	background-color: var(--main-color-medium);
+}
+#numPad button.adv:active {
+	border: none;
+}
+#numPad button[data-btn-id="ac"]:active {
+	background-color: var(--main-color-strong);
+}
+#numPad button.adv {
+	background-color: var(--main-color-dark);
+}
+#numPad button[data-btn-id="ac"] {
+	background-color: var(--main-color-medium);
+	border-color: var(--main-color-strong);
+}
+#numPad div.empty {
+	grid-column: 2 / 5;
+}
+#hintBtn {
+	--font-size: 5vmin;
+	position: fixed;
+	right: 0;
+	bottom: 0;
+	user-select: none;
+	font-size: var(--font-size);
+	color: var(--main-color-light);
+	height: calc(var(--font-size) * 1.2);
+	width: calc(var(--font-size) * 1.2);
+	border-radius: calc(var(--font-size) * 0.6);
+	background-color: var(--main-color-dark);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	margin: 0 calc(var(--font-size) * 0.6) calc(var(--font-size) * 0.6) 0;
+	-webkit-tap-highlight-color: transparent;
+	transition: transform 0.3s ease;
+}
+#hintBtn:active {
+	transform: scale(0.8);
+}
+#hint {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	transition: all 0.5s ease-in-out;
+	background-color: #fff;
+	width: 0;
+	opacity: 0;
+	list-style: none;
+	padding: 1vmin;
+	box-sizing: border-box;
+}
+#hint.open {
+	width: 30%;
+	opacity: 1;
+}
+#hint li {
+	width: 100%;
+}
+#hint .list-title {
+	color: var(--main-color-text);
+	display: grid;
+	grid-template-columns: 1fr min-content;
+	margin-top: 1vmin;
+	margin-bottom: 2vmin;
+	user-select: none;
+	align-items: center;
+}
+#hint .list-title p {
+	text-align: center;
+	font-size: 4vmin;
+}
+#hint .list-title button {
+	font-size: 4vmin;
+	line-height: 1;
+	height: 4vmin;
+	width: 4vmin;
+	font-family: ZenMaruGothic;
+	background-color: var(--main-color-dark);
+	border: none;
+	border-radius: 0.5vmin;
+	display: grid;
+	place-content: center;
+	outline: none;
+	color: var(--main-color-text);
+	margin-right: 1vmin;
+	cursor: pointer;
+	transition: transform 0.3s ease;
+}
+#hint .list-title button:active {
+	transform: scale(0.8);
+}
+#hint .list-manual {
+	margin-top: 0.25vmin;
+}
+#hint .list-manual .list-btn{
+	width: 100%;
+	background-color: var(--main-color-dark);
+	border: none;
+	outline: none;
+	font-size: 3vmin;
+	font-family: ZenMaruGothic;
+	color: var(--main-color-text);
+	cursor: pointer;
+}
+#hint .list-manual .list-btn::after{
+	content: '+';
+	position: absolute;
+	right: 0;
+	margin-right: 2vmin;
+}
+#hint .list-manual.open .list-btn::after{
+	content: '−';
+}
+#hint .list-manual .list-content{
+	display: grid;
+	grid-template-rows: 0fr;
+	overflow: hidden;
+	color: var(--main-color-text);
+	border: solid var(--main-color-dark) 0.25vmin;
+	transition: grid-template-rows 0.3s ease-in-out;
+}
+#hint .list-manual.open .list-content{
+	grid-template-rows: 1fr;
+}
+#hint .list-manual .list-content * {
+	min-height: 0;
+}
+#hint .list-manual .list-content ul {
+	font-size: 2.25vmin;
+	list-style: inside;
+	list-style-position: inside;
+	padding: 0 1vmin;
+}
+#hint .copyright {
+	font-size: 2vmin;
+	color: var(--main-color-text);
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	text-align: center;
+	margin-bottom: 1vmin;
+}
+
+@media (max-width: 800px) {
+	:root {
+		--calculator-w: 70vmin;
+		--calculator-h: 80vmin;
+		--btn-font-size: 5vmin;
+	}
+	#hintBtn {
+		--font-size: 8vmin;
+	}
+}

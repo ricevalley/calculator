@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Calc</title>
+	<link rel="stylesheet" type="text/css" href="./calc.css">
+</head>
+<body>
+	<main>
+		<input id="calcDisplay" type="text" inputmode="none">
+		<div id="numPad">
+			<button data-btn-id="ac">ac</button>
+			<div class="empty"></div>
+			<button class="adv" data-btn-id="nthRoot(,)">√</button>
+			<button class="adv" data-btn-id="^">^</button>
+			<button class="adv" data-btn-id="π">π</button>
+			<button class="adv" data-btn-id="!">!</button>
+			<button class="adv" data-btn-id="sin()">sin</button>
+			<button class="adv" data-btn-id="cos()">cos</button>
+			<button class="adv" data-btn-id="tan()">tan</button>
+			<button class="adv" data-btn-id="log(,)">log</button>
+			<button class="adv" data-btn-id="(">(</button>
+			<button class="adv" data-btn-id=")">)</button>
+			<button class="adv" data-btn-id=".">.</button>
+			<button class="adv" data-btn-id="%">%</button>
+			<button data-btn-id="7">7</button>
+			<button data-btn-id="8">8</button>
+			<button data-btn-id="9">9</button>
+			<button data-btn-id="+">+</button>
+			<button data-btn-id="4">4</button>
+			<button data-btn-id="5">5</button>
+			<button data-btn-id="6">6</button>
+			<button data-btn-id="−">−</button>
+			<button data-btn-id="1">1</button>
+			<button data-btn-id="2">2</button>
+			<button data-btn-id="3">3</button>
+			<button data-btn-id="×">×</button>
+			<button data-btn-id="0">0</button>
+			<button data-btn-id="del">←</button>
+			<button data-btn-id="enter">→</button>
+			<button data-btn-id="÷">÷</button>
+		</div>
+		<p id="hintBtn">?</p>
+		<ul id="hint">
+			<li class="list-title">
+				<p>MANUAL</p>
+				<button id="hintCloseBtn">×</button>
+			</li>
+			<li class="list-manual">
+				<button class="list-btn">使い方</button>
+				<div class="list-content">
+					<ul>
+						<li>入力は画面のボタン,キーボードからできます</li>
+						<li>入力を1字消す場合は←,全て消す場合はacを押します</li>
+						<li>計算をする場合は→を押します</li>
+					</ul>
+				</div>
+			</li>
+			<li class="list-manual">
+				<button class="list-btn">できること</button>
+				<div class="list-content">
+					<ul>
+						<li>四則演算</li>
+						<li>剰余</li>
+						<li>累乗根</li>
+						<li>累乗</li>
+						<li>円周率</li>
+						<li>階上</li>
+						<li>三角関数</li>
+						<li>対数</li>
+					</ul>
+				</div>
+			</li>
+			<li class="list-manual">
+				<button class="list-btn">累乗根</button>
+				<div class="list-content">
+					<ul>
+						<li>nthRoot(被開数, 次数)とします</li>
+						<li>aのn乗根は'nthRoot(a, n)'とします</li>
+					</ul>
+				</div>
+			</li>
+			<li class="list-manual">
+				<button class="list-btn">三角関数</button>
+				<div class="list-content">
+					<ul>
+						<li>sin(Rad)・tan(Rad)・tan(Rad)とします</li>
+						<li>sin30°(π/6)は'sin(π÷6)'とします</li>
+					</ul>
+				</div>
+			</li>
+			<li class="list-manual">
+				<button class="list-btn">対数</button>
+				<div class="list-content">
+					<ul>
+						<li>log(真数, 底)とします</li>
+						<li>log2(5)は'log(5, 2)'とします</li>
+					</ul>
+				</div>
+			</li>
+			<li class="copyright">© 2026 ricevalley</li>
+		</ul>
+	</main>
+	<script src="./calc.js" type="module"></script>
+</body>
+</html>
