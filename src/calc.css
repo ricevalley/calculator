@@ -10,6 +10,7 @@
 	--calculator-w: 60vmin;
 	--calculator-h: 65vmin;
 	--btn-font-size: 3.5vmin;
+	--hint-bar-size: 30%;
 }
 @font-face {
 	/*
@@ -119,6 +120,8 @@ main {
 	transform: scale(0.8);
 }
 #hint {
+	--hint-font-size: 4vmin;
+
 	position: fixed;
 	top: 0;
 	bottom: 0;
@@ -132,7 +135,7 @@ main {
 	box-sizing: border-box;
 }
 #hint.open {
-	width: 30%;
+	width: var(--hint-bar-size);
 	opacity: 1;
 }
 #hint li {
@@ -149,13 +152,13 @@ main {
 }
 #hint .list-title p {
 	text-align: center;
-	font-size: 4vmin;
+	font-size: var(--hint-font-size);
 }
 #hint .list-title button {
-	font-size: 4vmin;
+	font-size: var(--hint-font-size);
 	line-height: 1;
-	height: 4vmin;
-	width: 4vmin;
+	height: var(--hint-font-size);
+	width: var(--hint-font-size);
 	font-family: ZenMaruGothic;
 	background-color: var(--main-color-dark);
 	border: none;
@@ -172,14 +175,14 @@ main {
 	transform: scale(0.8);
 }
 #hint .list-manual {
-	margin-top: 0.25vmin;
+	margin-top: calc(var(--hint-font-size) * 0.075);
 }
 #hint .list-manual .list-btn{
 	width: 100%;
 	background-color: var(--main-color-dark);
 	border: none;
 	outline: none;
-	font-size: 3vmin;
+	font-size: calc(var(--hint-font-size) * 0.75);
 	font-family: ZenMaruGothic;
 	color: var(--main-color-text);
 	cursor: pointer;
@@ -208,20 +211,20 @@ main {
 	min-height: 0;
 }
 #hint .list-manual .list-content ul {
-	font-size: 2.25vmin;
+	font-size: calc(var(--hint-font-size) * 0.55);
 	list-style: inside;
 	list-style-position: inside;
 	padding: 0 1vmin;
 }
 #hint .copyright {
-	font-size: 2vmin;
+	font-size: calc(var(--hint-font-size) * 0.5);
 	color: var(--main-color-text);
 	position: absolute;
 	bottom: 0;
 	right: 0;
 	left: 0;
 	text-align: center;
-	margin-bottom: 1vmin;
+	margin-bottom: calc(var(--hint-font-size) * 0.5);
 }
 
 @media (max-width: 800px) {
@@ -229,6 +232,10 @@ main {
 		--calculator-w: 70vmin;
 		--calculator-h: 80vmin;
 		--btn-font-size: 5vmin;
+		--hint-bar-size: 100%;
+	}
+	#hint {
+		--hint-font-size: 8vmin;
 	}
 	#hintBtn {
 		--font-size: 8vmin;
